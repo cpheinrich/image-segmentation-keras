@@ -1,6 +1,10 @@
 import argparse
-import Models , LoadBatches
-
+#import Models , LoadBatches
+import LoadBatches
+import Models.VGGUnet
+import Models.VGGSegnet
+import Models.FCN8
+import Models.FCN32
 
 
 parser = argparse.ArgumentParser()
@@ -58,7 +62,7 @@ if len( load_weights ) > 0:
 	m.load_weights(load_weights)
 
 
-print "Model output shape" ,  m.output_shape
+print( "Model output shape" ,  m.output_shape)
 
 output_height = m.outputHeight
 output_width = m.outputWidth
@@ -71,13 +75,11 @@ if validate:
 
 if not validate:
 	for ep in range( epochs ):
-		m.fit_generator( G , 512  , epochs=1 )
-		m.save_weights( save_weights_path + "." + str( ep ) )
-		m.save( save_weights_path + ".model." + str( ep ) )
+		m.fit_generator( G , 2  , epochs=1 )
+		m.save_weights( save_weights_path + "." + str( ep ) + ".h5" )
+		m.save( save_weights_path + ".model." + str( ep ) + ".h5" )
 else:
 	for ep in range( epochs ):
-		m.fit_generator( G , 512  , validation_data=G2 , validation_steps=200 ,  epochs=1 )
-		m.save_weights( save_weights_path + "." + str( ep )  )
-		m.save( save_weights_path + ".model." + str( ep ) )
-
-
+		m.fit_generator( G , 2  , validation_data=G2 , validation_steps=200 ,  epochs=1 )
+		m.save_weights( save_weights_path + "." + str( ep ) + ".h5" )
+		m.save( save_weights_path + ".model." + str( ep ) + ".h5")

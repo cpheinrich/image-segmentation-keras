@@ -24,7 +24,7 @@ def imageSegmentationGenerator( images_path , segs_path ,  n_classes ):
 
 		img = cv2.imread( im_fn )
 		seg = cv2.imread( seg_fn )
-		print np.unique( seg )
+		print( np.unique( seg ) )
 
 		seg_img = np.zeros_like( seg )
 
@@ -46,4 +46,4 @@ parser.add_argument("--n_classes", type=int )
 args = parser.parse_args()
 
 
-imageSegmentationGenerator(args.images ,  args.annotations  ,  args.n_classes   ) 
+imageSegmentationGenerator(args.images ,  args.annotations  ,  args.n_classes   )

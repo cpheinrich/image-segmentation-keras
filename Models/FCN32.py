@@ -1,6 +1,6 @@
 
 # https://github.com/wkentaro/pytorch-fcn/blob/master/torchfcn/models/fcn32s.py
-# fc weights into the 1x1 convs  , get_upsampling_weight 
+# fc weights into the 1x1 convs  , get_upsampling_weight
 
 
 
@@ -73,11 +73,11 @@ def FCN32( n_classes ,  input_height=416, input_width=608 , vgg_level=3):
 	o = ( Conv2D( n_classes ,  ( 1 , 1 ) ,kernel_initializer='he_normal' , data_format=IMAGE_ORDERING))(o)
 	o = Conv2DTranspose( n_classes , kernel_size=(64,64) ,  strides=(32,32) , use_bias=False ,  data_format=IMAGE_ORDERING )(o)
 	o_shape = Model(img_input , o ).output_shape
-	
+
 	outputHeight = o_shape[2]
 	outputWidth = o_shape[3]
 
-	print "koko" , o_shape
+	print ("koko" , o_shape)
 
 	o = (Reshape(( -1  , outputHeight*outputWidth   )))(o)
 	o = (Permute((2, 1)))(o)

@@ -1,4 +1,5 @@
 data/
+weights/*
 
 
 
@@ -103,5 +104,3 @@ ENV/
 
 # Rope project settings
 .ropeproject
-
-

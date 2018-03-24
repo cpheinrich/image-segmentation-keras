@@ -1,5 +1,9 @@
 import argparse
-import Models , LoadBatches
+import LoadBatches
+import Models.VGGUnet
+import Models.VGGSegnet
+import Models.FCN8
+import Models.FCN32
 from keras.models import load_model
 import glob
 import cv2
@@ -55,4 +59,3 @@ for imgName in images:
 		seg_img[:,:,2] += ((pr[:,: ] == c )*( colors[c][2] )).astype('uint8')
 	seg_img = cv2.resize(seg_img  , (input_width , input_height ))
 	cv2.imwrite(  outName , seg_img )
-
