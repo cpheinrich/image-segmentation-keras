@@ -33,11 +33,10 @@ modelFns = { 'vgg_segnet':Models.VGGSegnet.VGGSegnet , 'vgg_unet':Models.VGGUnet
 modelFN = modelFns[ model_name ]
 
 m = modelFN( n_classes , input_height=input_height, input_width=input_width   )
-m.load_weights(  args.save_weights_path + "." + str(  epoch_number )  )
+m.load_weights(  args.save_weights_path + "." + str(  epoch_number ) + ".h5"  )
 m.compile(loss='categorical_crossentropy',
       optimizer= 'adadelta' ,
       metrics=['accuracy'])
-
 
 output_height = m.outputHeight
 output_width = m.outputWidth
