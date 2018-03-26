@@ -97,14 +97,14 @@ To train the model run the following command:
 
 ```shell
 THEANO_FLAGS=device=gpu,floatX=float32  python  train.py \
- --save_weights_path=weights/ex1 \
+ --save_weights_path=ex1 \
  --train_images="data/dataset1/images_prepped_train/" \
  --train_annotations="data/dataset1/annotations_prepped_train/" \
  --val_images="data/dataset1/images_prepped_test/" \
  --val_annotations="data/dataset1/annotations_prepped_test/" \
  --n_classes=10 \
- --input_height=320 \
- --input_width=640 \
+ --input_height=224 \
+ --input_width=224 \
  --model_name="vgg_segnet" 
 ```
 
@@ -116,13 +116,13 @@ To get the predictions of a trained model
 
 ```shell
 THEANO_FLAGS=device=gpu,floatX=float32  python  predict.py \
- --save_weights_path=weights/ex1 \
+ --save_weights_path=ex1 \
  --epoch_number=0 \
  --test_images="data/dataset1/images_prepped_test/" \
  --output_path="data/predictions/" \
  --n_classes=10 \
- --input_height=320 \
- --input_width=640 \
+ --input_height=224 \
+ --input_width=224 \
  --model_name="vgg_segnet" 
 ```
 
